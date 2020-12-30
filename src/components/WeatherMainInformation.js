@@ -24,6 +24,7 @@ const Container = styled(Row)`
     align-items: flex-end;
     padding: 0 0 6em 10em;
     flex-direction: row;
+    justify-content: flex-start;
   `}
 `
 
@@ -34,6 +35,7 @@ const Degrees = styled(Text)`
   text-align: center;
   ${breakpoint('desktop')`
     margin-right: 5px;
+    text-align: left;
   `}
 `
 
@@ -43,6 +45,9 @@ const Place = styled(Text)`
   margin-bottom: 5px;
   display: block;
   text-align: center;
+  ${breakpoint('desktop')`
+    text-align: left;
+  `}
 `
 
 const LocationDetailsContainer = styled(Column)`
@@ -54,6 +59,8 @@ const LocationDetailsContainer = styled(Column)`
     padding-left: 5px;
     padding-right: 5px;
     max-width: 60%;
+    justify-content: initial;
+    align-items: initial;
   `}
 `
 
@@ -66,10 +73,13 @@ const WeatherDescriptionContainer = styled(Column)`
 `
 
 const DegreesContainer = styled(Column)`
-  ${breakpoint('mobile')`
-    width: 100%;
-    align-items: center;
-    justify-content: center;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  ${breakpoint('desktop')`
+    width: auto;
+    align-items: initial;
+    justify-content: initial;
   `}
 `
 

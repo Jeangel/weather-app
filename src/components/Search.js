@@ -17,13 +17,14 @@ const SearchInputContainer = styled.div`
   padding-right: 20px;
   width: 70%;
   ${breakpoint('desktop')`
+    width: 85%;
+    max-width: 100%;
   `}
   display: inline-block;
   max-width: 200px;
 `
 
 const ButtonContainer = styled.div`
-  width: 15%;
   display: inline-block;
 `
 
