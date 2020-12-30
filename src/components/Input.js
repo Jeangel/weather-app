@@ -6,6 +6,8 @@ export const Input = styled.input`
   border-bottom: 0.2px solid #888888;
   color: white;
   line-height: 2.5;
+  font-family: Roboto;
+  font-weight: lighter;
   :focus {
     outline: none;
     border-bottom: 0.2px solid white;
@@ -13,5 +15,6 @@ export const Input = styled.input`
   ::placeholder {
     color: #888888;
     font-family: Roboto;
+    font-weight: lighter;
   }
 `
