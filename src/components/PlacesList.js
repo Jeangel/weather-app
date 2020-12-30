@@ -1,6 +1,8 @@
 import React from 'react'
 import { useRecoilValue } from 'recoil'
+import _ from 'lodash'
 import { atomPlaces } from '../state/atoms'
+import { PlaceItem } from './PlaceItem';
 
 /**
  * @typedef {object} Place
@@ -9,6 +11,7 @@ import { atomPlaces } from '../state/atoms'
  * @prop {string} state
  */
 
+
 export const PlacesList = () => {
   /**
    * @type {Place[]}
@@ -16,11 +19,11 @@ export const PlacesList = () => {
   const places = useRecoilValue(atomPlaces);
   // TODO, style this stuff... add abiltiy to 'select' a location to update the main thing
   // add weather details section
-  console.log(places)
+  const uniquePlaces = _.uniqBy(places, (e) => e.country.concat(e.name))
   return (
     <div>
-      {places.map((e) => (
-        <p style={{color: 'white'}}>{e.name}, {e.country} {e.state}</p>
+      {uniquePlaces.map((e, i) => (
+        <PlaceItem place={e} key={i} />
       ))}
     </div>
   )
