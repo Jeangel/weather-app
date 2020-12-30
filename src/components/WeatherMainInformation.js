@@ -15,7 +15,7 @@ const Text = styled.span`
 
 const Container = styled(Row)`
   width: 100%;
-  align-items: center;
+  align-items: flex-end;
   padding: 0 0 6em 10em;
 `
 
@@ -36,6 +36,7 @@ const Place = styled(Text)`
 const LocationDetailsContainer = styled(Column)`
   padding-left: 5px;
   padding-right: 5px;
+  max-width: 60%;
 `
 
 const WeatherDescriptionContainer = styled(Column)`
@@ -71,28 +72,26 @@ export const WeatherMainInformation = () => {
   const inFormat = 'yyyy-MM-dd hh:mm:ss'
   const outFormat = 'hh:mm a - cccc, dd MMM yyyy'
   return (
-    <Container>
-      {(!_.isEmpty(place) && !_.isEmpty(place.weather)) && (
-        <Row style={{ alignItems: 'flex-end' }}>
-          <Column>
-            <Degrees>{place.weather.main.temp}°</Degrees>
-          </Column>
-          <LocationDetailsContainer>
-            <Place>{place.details.name}, {place.details.country}</Place>
-            <Row>
-              <Text>{DateTime.fromFormat(place.time.formatted, inFormat).toFormat(outFormat)}</Text>
-            </Row>
-          </LocationDetailsContainer>
-          <WeatherDescriptionContainer>
-            <Row style={{ marginBottom: 10 }}>
-              <WeatherIcon type={_.first(place.weather.weather).main} />
-            </Row>
-            <Row>
-              <Text>{_.first(place.weather.weather).main}</Text>
-            </Row>
-          </WeatherDescriptionContainer>
-        </Row>
-      )}
-    </Container>
+    (!_.isEmpty(place) && !_.isEmpty(place.weather) && (
+      <Container>
+        <Column>
+          <Degrees>{place.weather.main.temp}°</Degrees>
+        </Column>
+        <LocationDetailsContainer>
+          <Place>{place.details.name}, {place.details.country}</Place>
+          <Row>
+            <Text>{DateTime.fromFormat(place.time.formatted, inFormat).toFormat(outFormat)}</Text>
+          </Row>
+        </LocationDetailsContainer>
+        <WeatherDescriptionContainer>
+          <Row style={{ marginBottom: 10 }}>
+            <WeatherIcon type={_.first(place.weather.weather).main} />
+          </Row>
+          <Row>
+            <Text>{_.first(place.weather.weather).main}</Text>
+          </Row>
+        </WeatherDescriptionContainer>
+      </Container>
+    ))
   )
 }
