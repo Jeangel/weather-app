@@ -4,7 +4,7 @@ import { Input } from './Input'
 import { Button } from './Button'
 import { FaSearch } from 'react-icons/fa'
 import { searchPlaces } from '../api/weather'
-import { atomPlaces } from '../state/atoms'
+import { placesState } from '../state/atoms'
 import { useSetRecoilState } from 'recoil'
 
 const SearchInput = styled(Input)`
@@ -19,7 +19,7 @@ const SearchInputContainer = styled.div`
 
 export const Search = () => {
   const [filterValue, setFilterValue] = useState('')
-  const setPlaces = useSetRecoilState(atomPlaces);
+  const setPlaces = useSetRecoilState(placesState);
   const search = async () => {
     setPlaces(await searchPlaces(filterValue))
   }

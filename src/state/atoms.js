@@ -1,6 +1,11 @@
 import { atom } from 'recoil'
 
-export const atomPlaces = atom({
+export const placesState = atom({
   key: 'places',
   default: []
+})
+
+export const spinnerState = atom({
+  key: 'spinner',
+  default: false
 })

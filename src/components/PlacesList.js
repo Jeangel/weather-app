@@ -1,7 +1,7 @@
 import React from 'react'
 import { useRecoilValue } from 'recoil'
 import _ from 'lodash'
-import { atomPlaces } from '../state/atoms'
+import { placesState } from '../state/atoms'
 import { PlaceItem } from './PlaceItem';
 
 /**
@@ -16,7 +16,7 @@ export const PlacesList = () => {
   /**
    * @type {Place[]}
    */
-  const places = useRecoilValue(atomPlaces);
+  const places = useRecoilValue(placesState);
   // TODO, style this stuff... add abiltiy to 'select' a location to update the main thing
   // add weather details section
   const uniquePlaces = _.uniqBy(places, (e) => e.country.concat(e.name))
