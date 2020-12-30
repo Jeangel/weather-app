@@ -2,7 +2,7 @@ import Axios from 'axios'
 
 const axios = Axios.create({ baseURL: 'http://api.timezonedb.com/v2.1/get-time-zone' })
 
-const apiKey = process.env.TIMEZONE_API_KEY
+const apiKey = process.env.REACT_APP_TIMEZONE_API_KEY
 
 /**
  * Retrieves time information for the given coordiantes
