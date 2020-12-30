@@ -9,3 +9,12 @@ export const spinnerState = atom({
   key: 'spinner',
   default: false
 })
+
+export const selectedPlaceState = atom({
+  key: 'selectedPlace',
+  default: {
+    details: {},
+    weather: {},
+    time: {}
+  }
+})
