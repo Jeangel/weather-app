@@ -1,6 +1,6 @@
 import { atom } from 'recoil'
 
-export const places = atom({
+export const atomPlaces = atom({
   key: 'places',
   default: []
 })

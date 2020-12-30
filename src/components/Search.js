@@ -1,12 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Input } from './Input'
 import { Button } from './Button'
 import { FaSearch } from 'react-icons/fa'
-
-const Container = styled.div`
-  padding: 2em 3em;
-`
+import { searchPlaces } from '../api/weather'
+import { atomPlaces } from '../state/atoms'
+import { useSetRecoilState } from 'recoil'
 
 const SearchInput = styled(Input)`
   width: 100%;
@@ -19,14 +18,24 @@ const SearchInputContainer = styled.div`
 `
 
 export const Search = () => {
+  const [filterValue, setFilterValue] = useState('')
+  const setPlaces = useSetRecoilState(atomPlaces);
+  const search = async () => {
+    setPlaces(await searchPlaces(filterValue))
+  }
+
   return (
-    <Container>
+    <React.Fragment>
       <SearchInputContainer>
-        <SearchInput placeholder='Search Places' />
+        <SearchInput 
+          placeholder='Search Places' 
+          value={filterValue}
+          onChange={(e) => setFilterValue(e.target.value)}
+        />
       </SearchInputContainer>
-      <Button>
+      <Button onClick={search}>
         <FaSearch size={10} />
       </Button>
-    </Container>
+    </React.Fragment>
   )
 }
