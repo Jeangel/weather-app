@@ -5,7 +5,8 @@ import { Button } from './Button'
 import { FaSearch } from 'react-icons/fa'
 import { searchPlaces } from '../api/weather'
 import { placesState } from '../state/atoms'
-import { useSetRecoilState } from 'recoil'
+import { spinnerState } from '../state/atoms'
+import { useRecoilState, useSetRecoilState } from 'recoil'
 
 const SearchInput = styled(Input)`
   width: 100%;
@@ -20,8 +21,12 @@ const SearchInputContainer = styled.div`
 export const Search = () => {
   const [filterValue, setFilterValue] = useState('')
   const setPlaces = useSetRecoilState(placesState);
+  const [isSpinnerActive, setIsSpinnerActive] = useRecoilState(spinnerState);
   const search = async () => {
-    setPlaces(await searchPlaces(filterValue))
+    setIsSpinnerActive(true)
+    const newPlaces = await searchPlaces(filterValue)
+    setPlaces(newPlaces)
+    setIsSpinnerActive(false)
   }
 
   return (
@@ -33,7 +38,7 @@ export const Search = () => {
           onChange={(e) => setFilterValue(e.target.value)}
         />
       </SearchInputContainer>
-      <Button onClick={search}>
+      <Button onClick={search} disabled={isSpinnerActive}>
         <FaSearch size={10} />
       </Button>
     </React.Fragment>
