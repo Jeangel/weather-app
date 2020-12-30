@@ -6,6 +6,7 @@ import { WiFog, WiDaySunny, WiSnow, WiRain, WiCloud } from 'react-icons/all'
 import { selectedPlaceState } from '../state/atoms'
 import { Row } from './Row'
 import { Column } from './Column'
+import { DateTime } from 'luxon'
 
 const Text = styled.span`
   color: white;
@@ -67,6 +68,8 @@ const WeatherIcon = ({ type = '' }) => {
 
 export const WeatherMainInformation = () => {
   const place = useRecoilValue(selectedPlaceState)
+  const inFormat = 'yyyy-MM-dd hh:mm:ss'
+  const outFormat = 'hh:mm a - cccc, dd MMM yyyy'
   return (
     <Container>
       {(!_.isEmpty(place) && !_.isEmpty(place.weather)) && (
@@ -77,7 +80,7 @@ export const WeatherMainInformation = () => {
           <LocationDetailsContainer>
             <Place>{place.details.name}, {place.details.country}</Place>
             <Row>
-              <Text>06:09 - Monday, 9 sep 2019</Text>
+              <Text>{DateTime.fromFormat(place.time.formatted, inFormat).toFormat(outFormat)}</Text>
             </Row>
           </LocationDetailsContainer>
           <WeatherDescriptionContainer>
