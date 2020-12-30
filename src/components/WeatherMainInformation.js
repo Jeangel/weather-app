@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import breakpoint from 'styled-components-breakpoint'
 import { useRecoilValue } from 'recoil'
 import _ from 'lodash'
 import { WiFog, WiDaySunny, WiSnow, WiRain, WiCloud } from 'react-icons/all'
@@ -15,15 +16,25 @@ const Text = styled.span`
 
 const Container = styled(Row)`
   width: 100%;
-  align-items: flex-end;
-  padding: 0 0 6em 10em;
+  padding: 6em 1em;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  ${breakpoint('desktop')`
+    align-items: flex-end;
+    padding: 0 0 6em 10em;
+    flex-direction: row;
+  `}
 `
 
 const Degrees = styled(Text)`
   font-size: 6em;
   line-height: 0.8;
-  margin-right: 5px;
   font-weight: normal;
+  text-align: center;
+  ${breakpoint('desktop')`
+    margin-right: 5px;
+  `}
 `
 
 const Place = styled(Text)`
@@ -31,16 +42,35 @@ const Place = styled(Text)`
   font-weight: normal;
   margin-bottom: 5px;
   display: block;
+  text-align: center;
 `
 
 const LocationDetailsContainer = styled(Column)`
-  padding-left: 5px;
-  padding-right: 5px;
-  max-width: 60%;
+  padding-top: 1em;
+  justify-content: center;
+  align-items: center;
+  ${breakpoint('desktop')`
+    padding-top: 0;
+    padding-left: 5px;
+    padding-right: 5px;
+    max-width: 60%;
+  `}
 `
 
 const WeatherDescriptionContainer = styled(Column)`
-  padding-left: 20px;
+  padding-top: 1em;
+  ${breakpoint('desktop')`
+    padding-top: 0;
+    padding-left: 20px;
+  `}
+`
+
+const DegreesContainer = styled(Column)`
+  ${breakpoint('mobile')`
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  `}
 `
 
 /**
@@ -71,12 +101,13 @@ export const WeatherMainInformation = () => {
   const place = useRecoilValue(selectedPlaceState)
   const inFormat = 'yyyy-MM-dd hh:mm:ss'
   const outFormat = 'hh:mm a - cccc, dd MMM yyyy'
+  const hasAllValues = !_.isEmpty(place) && !_.isEmpty(place.weather) && !_.isEmpty(place.time)
   return (
-    (!_.isEmpty(place) && !_.isEmpty(place.weather) && (
+    (hasAllValues && (
       <Container>
-        <Column>
+        <DegreesContainer>
           <Degrees>{place.weather.main.temp}°</Degrees>
-        </Column>
+        </DegreesContainer>
         <LocationDetailsContainer>
           <Place>{place.details.name}, {place.details.country}</Place>
           <Row>
