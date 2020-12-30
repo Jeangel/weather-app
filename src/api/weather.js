@@ -12,7 +12,12 @@ const apiKey = process.env.REACT_APP_OPEN_WEATHER_API_KEY
  */
 export const searchPlaces = async (filterValue) => {
   try {
-    const response = await axios.get(`${GEO_API_PATH}?q=${filterValue}&limit=5&appid=${apiKey}`)
+    const params = {
+      q: filterValue,
+      limit: '5',
+      appid: apiKey
+    }
+    const response = await axios.get(GEO_API_PATH, { params })
     return response.data
   } catch (error) {
     console.log(error)
@@ -29,7 +34,13 @@ export const searchPlaces = async (filterValue) => {
  */
 export const getWeatherDetails = async ({ lat, lon }) => {
   try {
-    const response = await axios.get(`${WEATHER_API_PATH}?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`)
+    const params = { 
+      lat,
+      lon,
+      units: 'metric',
+      appid: apiKey
+    }
+    const response = await axios.get(WEATHER_API_PATH, { params })
     return response.data
   } catch (error) {
     console.log(error)
