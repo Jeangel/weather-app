@@ -20,6 +20,9 @@ const Container = styled.div`
 
 const DetailsSectionContent = styled.div`
   padding: 1em 3em;
+  align-items: center;
+  justify-content: center;
+  display: flex;
   ${breakpoint('desktop')`
     padding: 2em 3em;
   `}

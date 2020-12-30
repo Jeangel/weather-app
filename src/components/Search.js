@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import breakpoint from 'styled-components-breakpoint'
 import { Input } from './Input'
 import { Button } from './Button'
 import { FaSearch } from 'react-icons/fa'
@@ -15,6 +16,14 @@ const SearchInput = styled(Input)`
 const SearchInputContainer = styled.div`
   padding-right: 20px;
   width: 70%;
+  ${breakpoint('desktop')`
+  `}
+  display: inline-block;
+  max-width: 200px;
+`
+
+const ButtonContainer = styled.div`
+  width: 15%;
   display: inline-block;
 `
 
@@ -38,9 +47,11 @@ export const Search = () => {
           onChange={(e) => setFilterValue(e.target.value)}
         />
       </SearchInputContainer>
-      <Button onClick={search} disabled={isSpinnerActive}>
-        <FaSearch size={10} />
-      </Button>
+      <ButtonContainer>
+        <Button onClick={search} disabled={isSpinnerActive}>
+          <FaSearch size={10} />
+        </Button>
+      </ButtonContainer>
     </React.Fragment>
   )
 }

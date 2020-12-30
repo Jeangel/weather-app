@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { getWeatherDetails } from '../api/weather'
 import { useSetRecoilState } from 'recoil'
-import { selectedPlaceState } from '../state/atoms'
+import { selectedPlaceState, placesState } from '../state/atoms'
 import { getTimeDetails } from '../api/time'
 
 /**
@@ -41,11 +41,13 @@ export const PlaceItem = ({ place }) => {
   const { country, name, state } = place
   const [isHovered, setIsHovered] = useState(false)
   const setSelectedPlace = useSetRecoilState(selectedPlaceState)
+  const setPlaces = useSetRecoilState(placesState)
   const handleClick = async () => {
     const weatherPromise = getWeatherDetails({ lat: place.lat, lon: place.lon })
     const timePromise = getTimeDetails({ lat: place.lat, lon: place.lon })
     const [weather, time] = await Promise.all([weatherPromise, timePromise])
     setSelectedPlace({ weather, time, details: place })
+    setPlaces([])
   }
   const countryFlagUrl = `https://www.countryflags.io/${country.toLowerCase()}/flat/24.png`
   return (
