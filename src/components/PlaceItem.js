@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { getWeatherDetails } from '../api/weather'
 import { useSetRecoilState } from 'recoil'
-import { selectedPlaceState, placesState } from '../state/atoms'
+import { selectedPlaceState, placesState, spinnerState } from '../state/atoms'
 import { getTimeDetails } from '../api/time'
 
 /**
@@ -42,12 +42,15 @@ export const PlaceItem = ({ place }) => {
   const [isHovered, setIsHovered] = useState(false)
   const setSelectedPlace = useSetRecoilState(selectedPlaceState)
   const setPlaces = useSetRecoilState(placesState)
+  const setSpinnerIsActive = useSetRecoilState(spinnerState)
   const handleClick = async () => {
+    setSpinnerIsActive(true)
     const weatherPromise = getWeatherDetails({ lat: place.lat, lon: place.lon })
     const timePromise = getTimeDetails({ lat: place.lat, lon: place.lon })
     const [weather, time] = await Promise.all([weatherPromise, timePromise])
     setSelectedPlace({ weather: { ...weather, details: weather.weather[0]  }, time, details: place })
     setPlaces([])
+    setSpinnerIsActive(false)
   }
   const countryFlagUrl = `https://www.countryflags.io/${country.toLowerCase()}/flat/24.png`
   return (

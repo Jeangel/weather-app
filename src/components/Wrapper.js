@@ -3,9 +3,10 @@ import _ from 'lodash'
 import styled from 'styled-components'
 import { useRecoilValue } from 'recoil'
 import breakpoint from 'styled-components-breakpoint'
-import { selectedPlaceState } from '../state/atoms'
+import { selectedPlaceState, spinnerState } from '../state/atoms'
 import { DetailsSection } from './DetailsSection'
 import { MainSection } from './MainSection'
+import { GlobalSpinner } from './GlobalSpinner'
 
 const Container = styled.div`
   display: flex;
@@ -25,11 +26,15 @@ const Main = styled(MainSection)`
   display: flex;
 `
 
+
+
 export const Wrapper = () => {
   const selectedPlace = useRecoilValue(selectedPlaceState)
+  const isSpinnerActive = useRecoilValue(spinnerState)
   const weatherType = _.get(selectedPlace, 'weather.details.main', 'Clouds')
   return (
     <React.Fragment>
+      <GlobalSpinner active={isSpinnerActive} />
       <Container backgroundImageName={weatherType}>
         <Main />
         <DetailsSection />
