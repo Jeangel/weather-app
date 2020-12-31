@@ -46,7 +46,7 @@ export const PlaceItem = ({ place }) => {
     const weatherPromise = getWeatherDetails({ lat: place.lat, lon: place.lon })
     const timePromise = getTimeDetails({ lat: place.lat, lon: place.lon })
     const [weather, time] = await Promise.all([weatherPromise, timePromise])
-    setSelectedPlace({ weather, time, details: place })
+    setSelectedPlace({ weather: { ...weather, details: weather.weather[0]  }, time, details: place })
     setPlaces([])
   }
   const countryFlagUrl = `https://www.countryflags.io/${country.toLowerCase()}/flat/24.png`
