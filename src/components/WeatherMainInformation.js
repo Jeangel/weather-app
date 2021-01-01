@@ -101,6 +101,7 @@ const WeatherIcon = ({ type = '' }) => {
     case 'Snow':
       return <WiSnow {...props} />
     case 'Mist':
+    case 'Fog':
       return <WiFog {...props} />
     default:
       return <React.Fragment />
