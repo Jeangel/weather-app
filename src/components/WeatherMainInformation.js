@@ -109,28 +109,27 @@ const WeatherIcon = ({ type = '' }) => {
 }
 
 export const WeatherMainInformation = () => {
-  const place = useRecoilValue(selectedPlaceState)
-  const inFormat = 'yyyy-MM-dd hh:mm:ss'
+  const { current, location } = useRecoilValue(selectedPlaceState)
   const outFormat = 'hh:mm a - cccc, dd MMM yyyy'
-  const hasAllValues = !_.isEmpty(place) && !_.isEmpty(place.weather) && !_.isEmpty(place.time)
+  const hasAllValues = !_.isEmpty(current) && !_.isEmpty(location)
   return (
     (hasAllValues && (
       <Container>
         <DegreesContainer>
-          <Degrees>{place.weather.main.temp}°</Degrees>
+          <Degrees>{current.weather.temperature}°</Degrees>
         </DegreesContainer>
         <LocationDetailsContainer>
-          <Place>{place.details.name}, {place.details.country}</Place>
+          <Place>{location.name}, {location.country}</Place>
           <Row>
-            <Text>{DateTime.fromFormat(place.time.formatted, inFormat).toFormat(outFormat)}</Text>
+            <Text>{DateTime.fromSeconds(current.time).toFormat(outFormat)}</Text>
           </Row>
         </LocationDetailsContainer>
         <WeatherDescriptionContainer>
           <Row style={{ marginBottom: 10 }}>
-            <WeatherIcon type={_.first(place.weather.weather).main} />
+            <WeatherIcon type={current.weather.main} />
           </Row>
           <Row>
-            <Text>{_.first(place.weather.weather).main}</Text>
+            <Text>{current.weather.main }</Text>
           </Row>
         </WeatherDescriptionContainer>
       </Container>

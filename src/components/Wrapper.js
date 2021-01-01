@@ -1,5 +1,4 @@
 import React from 'react'
-import _ from 'lodash'
 import styled from 'styled-components'
 import { useRecoilValue } from 'recoil'
 import breakpoint from 'styled-components-breakpoint'
@@ -26,12 +25,10 @@ const Main = styled(MainSection)`
   display: flex;
 `
 
-
-
 export const Wrapper = () => {
-  const selectedPlace = useRecoilValue(selectedPlaceState)
+  const { current } = useRecoilValue(selectedPlaceState)
   const isSpinnerActive = useRecoilValue(spinnerState)
-  const weatherType = _.get(selectedPlace, 'weather.details.main', 'Clouds')
+  const weatherType = current.weather.main
   return (
     <React.Fragment>
       <GlobalSpinner active={isSpinnerActive} />

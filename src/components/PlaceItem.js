@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { getWeatherDetails } from '../api/weather'
+import { fetchFullLocationWeatherDetails } from '../api/weather'
 import { useSetRecoilState } from 'recoil'
 import { selectedPlaceState, placesState, spinnerState } from '../state/atoms'
-import { getTimeDetails } from '../api/time'
 
 /**
  * @typedef {object} Place
@@ -45,10 +44,8 @@ export const PlaceItem = ({ place }) => {
   const setSpinnerIsActive = useSetRecoilState(spinnerState)
   const handleClick = async () => {
     setSpinnerIsActive(true)
-    const weatherPromise = getWeatherDetails({ lat: place.lat, lon: place.lon })
-    const timePromise = getTimeDetails({ lat: place.lat, lon: place.lon })
-    const [weather, time] = await Promise.all([weatherPromise, timePromise])
-    setSelectedPlace({ weather: { ...weather, details: weather.weather[0]  }, time, details: place })
+    const locationWeatherDetails = await fetchFullLocationWeatherDetails({ lat: place.lat, lon: place.lon })
+    setSelectedPlace({ ...locationWeatherDetails, location: place })
     setPlaces([])
     setSpinnerIsActive(false)
   }

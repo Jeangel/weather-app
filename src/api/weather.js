@@ -3,7 +3,7 @@ import Axios from 'axios'
 const axios = Axios.create({ baseURL: 'http://api.openweathermap.org/' })
 
 const GEO_API_PATH = '/geo/1.0/direct'
-const WEATHER_API_PATH = '/data/2.5/weather'
+const FULL_LOCATION_WEATHER_DETAILS_API_PATH = '/data/2.5/onecall'
 const apiKey = process.env.REACT_APP_OPEN_WEATHER_API_KEY
 
 /**
@@ -28,22 +28,29 @@ export const searchPlaces = async (filterValue) => {
 /**
  * Retrieves weather information for the given coordinates
  * @param {{
- *  lat: number,
- *  lon: number
- * }} args
- */
-export const getWeatherDetails = async ({ lat, lon }) => {
+  *  lat: number,
+  *  lon: number
+  * }} args
+*/
+export const fetchFullLocationWeatherDetails = async ({ lat, lon }) => {
   try {
-    const params = { 
+    const params = {
       lat,
       lon,
       units: 'metric',
-      appid: apiKey
+      appid: apiKey,
+      exclude: ['minutely', 'alerts'].join(',')
     }
-    const response = await axios.get(WEATHER_API_PATH, { params })
-    return response.data
+    const { data } = await axios.get(FULL_LOCATION_WEATHER_DETAILS_API_PATH, { params })
+    return {
+      current: {
+        weather: { ...data.current.weather[0], temperature: data.current.temp },
+        time: data.current.dt
+      },
+      daily: data.daily.map(e => ({ daily: { ...e.weather, temperature: e.temp }, time: e.dt }))
+    }
   } catch (error) {
     console.log(error)
-    return {}
+    return []
   }
 }
