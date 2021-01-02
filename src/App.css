@@ -7,4 +7,5 @@ body {
 p, span {
   font-family: 'Roboto', sans-serif;
   line-height: 1;
+  margin: 0;
 }

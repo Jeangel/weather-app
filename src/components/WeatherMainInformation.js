@@ -6,13 +6,9 @@ import _ from 'lodash'
 import { WiFog, WiDaySunny, WiSnow, WiRain, WiCloud } from 'react-icons/all'
 import { selectedPlaceState } from '../state/atoms'
 import { Row } from './Row'
+import { Text } from './Text'
 import { Column } from './Column'
 import { DateTime } from 'luxon'
-
-const Text = styled.span`
-  color: white;
-  font-weight: lighter;
-`
 
 const Container = styled(Row)`
   width: 100%;
@@ -72,17 +68,6 @@ const WeatherDescriptionContainer = styled(Column)`
   `}
 `
 
-const DegreesContainer = styled(Column)`
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  ${breakpoint('desktop')`
-    width: auto;
-    align-items: initial;
-    justify-content: initial;
-  `}
-`
-
 /**
  * Icon that describes the given weather type
  * @param {{
@@ -116,14 +101,10 @@ export const WeatherMainInformation = () => {
   return (
     (hasAllValues && (
       <Container>
-        <DegreesContainer>
-          <Degrees>{current.weather.temperature}°</Degrees>
-        </DegreesContainer>
+        <Degrees>{current.weather.temperature}°</Degrees>
         <LocationDetailsContainer>
           <Place>{location.name}, {location.country}</Place>
-          <Row>
-            <Text>{DateTime.fromFormat(time.formatted, inFormat).toFormat(outFormat)}</Text>
-          </Row>
+          <Text inline>{DateTime.fromFormat(time.formatted, inFormat).toFormat(outFormat)}</Text>
         </LocationDetailsContainer>
         <WeatherDescriptionContainer>
           <Row style={{ marginBottom: 10 }}>
