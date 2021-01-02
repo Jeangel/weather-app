@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { fetchFullLocationWeatherDetails } from '../api/weather'
 import { fetchTimeFromLocation } from '../api/time'
 import { useSetRecoilState } from 'recoil'
-import { selectedPlaceState, placesState, spinnerState } from '../state/atoms'
+import { selectedPlaceState, spinnerState } from '../state/atoms'
 
 /**
  * @typedef {object} Place
@@ -41,7 +41,6 @@ export const PlaceItem = ({ place }) => {
   const { country, name, state } = place
   const [isHovered, setIsHovered] = useState(false)
   const setSelectedPlace = useSetRecoilState(selectedPlaceState)
-  const setPlaces = useSetRecoilState(placesState)
   const setSpinnerIsActive = useSetRecoilState(spinnerState)
   const handleClick = async () => {
     const { lat, lon } = place
@@ -50,7 +49,6 @@ export const PlaceItem = ({ place }) => {
     const timeDetailsPromise = fetchTimeFromLocation({ lat, lon })
     const [locationWeatherDetails, timeDetails] = await Promise.all([weatherDetailsPromise, timeDetailsPromise])
     setSelectedPlace({ ...locationWeatherDetails, location: place, time: timeDetails })
-    setPlaces([])
     setSpinnerIsActive(false)
   }
   const countryFlagUrl = `https://www.countryflags.io/${country.toLowerCase()}/flat/24.png`
