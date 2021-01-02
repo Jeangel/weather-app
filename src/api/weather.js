@@ -44,6 +44,7 @@ export const fetchFullLocationWeatherDetails = async ({ lat, lon }) => {
     const { data } = await axios.get(FULL_LOCATION_WEATHER_DETAILS_API_PATH, { params })
     return {
       current: {
+        ...data.current,
         weather: { ...data.current.weather[0], temperature: data.current.temp }
       },
       daily: data.daily.map(e => ({ daily: { ...e.weather, temperature: e.temp } }))
