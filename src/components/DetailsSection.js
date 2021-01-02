@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import breakpoint from 'styled-components-breakpoint'
 import { Search } from './Search'
 import { PlacesList } from './PlacesList'
+import { NextDaysSection } from './NextDaysSection'
 
 const Container = styled.div`
   width: 100%;
@@ -20,14 +21,15 @@ const Container = styled.div`
 
 const DetailsSectionContent = styled.div`
   padding: 1em 3em;
-  align-items: center;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   ${breakpoint('tablet')`
-    justify-content: center;
+    align-items: center;
   `}
   ${breakpoint('desktop')`
     padding: 2em 3em;
-    justify-content: left;
+    align-items: flex-start;
   `}
 `
 
@@ -38,6 +40,7 @@ export const DetailsSection = () => (
     </DetailsSectionContent>
     <DetailsSectionContent>
       <PlacesList />
+      <NextDaysSection />
     </DetailsSectionContent>
   </Container>
 )

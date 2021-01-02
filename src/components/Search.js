@@ -9,6 +9,18 @@ import { placesState } from '../state/atoms'
 import { spinnerState } from '../state/atoms'
 import { useRecoilState, useSetRecoilState } from 'recoil'
 
+const Container = styled.div`
+  width: 100%;
+  align-items: center;
+  display: flex;
+  ${breakpoint('tablet')`
+    justify-content: center;
+  `}
+  ${breakpoint('desktop')`
+    justify-content: left;
+  `}
+`
+
 const SearchInput = styled(Input)`
   width: 100%;
 `
@@ -40,7 +52,7 @@ export const Search = () => {
   }
 
   return (
-    <React.Fragment>
+    <Container>
       <SearchInputContainer>
         <SearchInput 
           placeholder='Search Places' 
@@ -53,6 +65,6 @@ export const Search = () => {
           <FaSearch size={10} />
         </Button>
       </ButtonContainer>
-    </React.Fragment>
+    </Container>
   )
 }
