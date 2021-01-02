@@ -109,8 +109,9 @@ const WeatherIcon = ({ type = '' }) => {
 }
 
 export const WeatherMainInformation = () => {
-  const { current, location } = useRecoilValue(selectedPlaceState)
+  const { current, location, time } = useRecoilValue(selectedPlaceState)
   const outFormat = 'hh:mm a - cccc, dd MMM yyyy'
+  const inFormat = 'yyyy-MM-dd hh:mm:ss'
   const hasAllValues = !_.isEmpty(current) && !_.isEmpty(location)
   return (
     (hasAllValues && (
@@ -121,7 +122,7 @@ export const WeatherMainInformation = () => {
         <LocationDetailsContainer>
           <Place>{location.name}, {location.country}</Place>
           <Row>
-            <Text>{DateTime.fromSeconds(current.time).toFormat(outFormat)}</Text>
+            <Text>{DateTime.fromFormat(time.formatted, inFormat).toFormat(outFormat)}</Text>
           </Row>
         </LocationDetailsContainer>
         <WeatherDescriptionContainer>

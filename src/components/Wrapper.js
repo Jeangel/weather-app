@@ -28,7 +28,7 @@ const Main = styled(MainSection)`
 export const Wrapper = () => {
   const { current } = useRecoilValue(selectedPlaceState)
   const isSpinnerActive = useRecoilValue(spinnerState)
-  const weatherType = current.weather.main
+  const weatherType = current.weather.main || 'Clouds'
   return (
     <React.Fragment>
       <GlobalSpinner active={isSpinnerActive} />

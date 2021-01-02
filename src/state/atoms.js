@@ -14,6 +14,7 @@ export const selectedPlaceState = atom({
   key: 'selectedPlace',
   default: {
     location: {},
+    time: {},
     current: {
       weather: {},
       time: {}

@@ -49,7 +49,7 @@ export const Search = () => {
         />
       </SearchInputContainer>
       <ButtonContainer>
-        <Button onClick={search} disabled={isSpinnerActive}>
+        <Button onClick={search} disabled={isSpinnerActive || !filterValue}>
           <FaSearch size={10} />
         </Button>
       </ButtonContainer>

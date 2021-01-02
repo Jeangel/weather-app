@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { fetchFullLocationWeatherDetails } from '../api/weather'
+import { fetchTimeFromLocation } from '../api/time'
 import { useSetRecoilState } from 'recoil'
 import { selectedPlaceState, placesState, spinnerState } from '../state/atoms'
 
@@ -43,9 +44,12 @@ export const PlaceItem = ({ place }) => {
   const setPlaces = useSetRecoilState(placesState)
   const setSpinnerIsActive = useSetRecoilState(spinnerState)
   const handleClick = async () => {
+    const { lat, lon } = place
     setSpinnerIsActive(true)
-    const locationWeatherDetails = await fetchFullLocationWeatherDetails({ lat: place.lat, lon: place.lon })
-    setSelectedPlace({ ...locationWeatherDetails, location: place })
+    const weatherDetailsPromise = fetchFullLocationWeatherDetails({ lat, lon })
+    const timeDetailsPromise = fetchTimeFromLocation({ lat, lon })
+    const [locationWeatherDetails, timeDetails] = await Promise.all([weatherDetailsPromise, timeDetailsPromise])
+    setSelectedPlace({ ...locationWeatherDetails, location: place, time: timeDetails })
     setPlaces([])
     setSpinnerIsActive(false)
   }
