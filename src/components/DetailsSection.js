@@ -3,10 +3,11 @@ import styled from 'styled-components'
 import breakpoint from 'styled-components-breakpoint'
 import { Search } from './Search'
 import { PlacesList } from './PlacesList'
-import { NextDaysSection } from './NextDaysSection'
+import { WeatherDetails } from './WeatherDetails'
 
 const Container = styled.div`
   width: 100%;
+  overflow-y: scroll;
   backdrop-filter: blur(15px);
   ${breakpoint('desktop')`
     position: absolute;
@@ -33,14 +34,26 @@ const DetailsSectionContent = styled.div`
   `}
 `
 
+const PlaceListContainer = styled(DetailsSectionContent)`
+  ${breakpoint('desktop')`
+    padding-bottom: 0;
+  `}
+`
+
+const WeatherDetailsContainer = styled(DetailsSectionContent)`
+  padding-bottom: 2em;
+`
+
 export const DetailsSection = () => (
   <Container>
     <DetailsSectionContent>
       <Search />
     </DetailsSectionContent>
-    <DetailsSectionContent>
-      <PlacesList />
-      <NextDaysSection />
-    </DetailsSectionContent>
+    <PlaceListContainer>
+        <PlacesList />
+    </PlaceListContainer>
+    <WeatherDetailsContainer>
+      <WeatherDetails />
+    </WeatherDetailsContainer>
   </Container>
 )
