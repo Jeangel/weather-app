@@ -18,7 +18,7 @@ const StyledLoader = styled.div`
   z-index: 9999;
 `
 
-export const GlobalSpinner = ({ active, children }) => (
+export const GlobalSpinner = ({ active }) => (
   <StyledLoader
     active={active}
   >

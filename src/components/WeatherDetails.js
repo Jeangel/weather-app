@@ -87,8 +87,9 @@ export const WeatherDetails = () => {
       </DetailsContainer>
       <DetailsContainer>
         <Title weight='bold'>Next Days</Title>
-        {daily.map(e => (
-          <RowItem 
+        {daily.map((e, i) => (
+          <RowItem
+            key={i}
             label={DateTime.fromSeconds(e.dt).toFormat('cccc')}
             icon={<WeatherIcon type={e.weather.main} size={20} />}
             value={`${e.weather.temperature.day} °`}

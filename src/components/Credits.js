@@ -20,12 +20,14 @@ const CreditsContainer = styled(Row)`
   justify-content: space-evenly;
   align-items: center;
   padding: 10px 0;
+  flex-wrap: wrap;
 `
 
 const PhotosByContainer = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   padding: 20px 0;
 `
 
@@ -38,7 +40,7 @@ const PhotosByText = styled(Text)`
 export const Credits = () => (
   <Container>
     <CreditsContainer>
-      <Text>Design by <a target="_blank" rel="noopener noreferrer" href="https://dribbble.com/thearthurk">Arthur K</a></Text>
+      <Text><a target="_blank" rel="noopener noreferrer" href="https://dribbble.com/shots/7118235-Weather-DailyUI-037">Design inspiration</a> by <a target="_blank" rel="noopener noreferrer" href="https://dribbble.com/thearthurk">Arthur K</a></Text>
     </CreditsContainer>
     <PhotosByContainer>
       <PhotosByText>Photos By</PhotosByText>
@@ -47,7 +49,7 @@ export const Credits = () => (
         <Text><a target="_blank" rel="noopener noreferrer" href="https://unsplash.com/@nathananderson?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Nathan Anderson</a></Text>
         <Text><a target="_blank" rel="noopener noreferrer" href="https://unsplash.com/@neilrst?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Neil Rosenstech</a></Text>
         <Text><a target="_blank" rel="noopener noreferrer" href="https://unsplash.com/@valentin_mueller?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Valentin Müller</a></Text>
-        <Text><a target="_blank" rel="noopener noreferrer" href="https://unsplash.com/@eberhardgross?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">eberhard grossgasteiger</a></Text>
+        <Text><a target="_blank" rel="noopener noreferrer" href="https://unsplash.com/@eberhardgross?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Eberhard</a></Text>
         <Text><a target="_blank" rel="noopener noreferrer" href="https://unsplash.com/@samuel_s?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Samuel</a></Text>
         <Text><a target="_blank" rel="noopener noreferrer" href="https://unsplash.com/@florianolv?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Florian Olivo</a></Text>
       </CreditsContainer>
