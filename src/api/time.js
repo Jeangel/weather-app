@@ -18,7 +18,7 @@ export const fetchTimeFromLocation = async ({ lat, lon }) => {
       lng: lon,
       format: 'json'
     }
-    const response = await axios.get('http://api.timezonedb.com/v2.1/get-time-zone', { params })
+    const response = await axios.get('https://api.timezonedb.com/v2.1/get-time-zone', { params })
     return response.data
   } catch (error) {
     console.log(error)

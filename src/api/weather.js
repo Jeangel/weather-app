@@ -1,6 +1,6 @@
 import Axios from 'axios'
 
-const axios = Axios.create({ baseURL: 'http://api.openweathermap.org/' })
+const axios = Axios.create({ baseURL: 'https://api.openweathermap.org/' })
 
 const GEO_API_PATH = '/geo/1.0/direct'
 const FULL_LOCATION_WEATHER_DETAILS_API_PATH = '/data/2.5/onecall'
