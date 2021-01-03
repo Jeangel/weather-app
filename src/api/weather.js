@@ -14,7 +14,7 @@ export const searchPlaces = async (filterValue) => {
   try {
     const params = {
       q: filterValue,
-      limit: '5',
+      limit: '4',
       appid: apiKey
     }
     const response = await axios.get(GEO_API_PATH, { params })
@@ -47,7 +47,7 @@ export const fetchFullLocationWeatherDetails = async ({ lat, lon }) => {
         ...data.current,
         weather: { ...data.current.weather[0], temperature: data.current.temp }
       },
-      daily: data.daily.map(e => ({ daily: { ...e.weather, temperature: e.temp } }))
+      daily: data.daily.slice(0, 5).map(e => ({ ...e, weather: { ...e.weather[0], temperature: e.temp } }))
     }
   } catch (error) {
     console.log(error)

@@ -1,14 +1,14 @@
 import React from 'react'
-import styled from 'styled-components'
-import breakpoint from 'styled-components-breakpoint'
-import { useRecoilValue } from 'recoil'
 import _ from 'lodash'
-import { WiFog, WiDaySunny, WiSnow, WiRain, WiCloud } from 'react-icons/all'
-import { selectedPlaceState } from '../state/atoms'
+import { DateTime } from 'luxon'
+import styled from 'styled-components'
+import { useRecoilValue } from 'recoil'
+import breakpoint from 'styled-components-breakpoint'
 import { Row } from './Row'
 import { Text } from './Text'
 import { Column } from './Column'
-import { DateTime } from 'luxon'
+import { WeatherIcon } from './WeatherIcon'
+import { selectedPlaceState } from '../state/atoms'
 
 const Container = styled(Row)`
   width: 100%;
@@ -68,31 +68,6 @@ const WeatherDescriptionContainer = styled(Column)`
   `}
 `
 
-/**
- * Icon that describes the given weather type
- * @param {{
- *  type: string
- * }} props
- */
-const WeatherIcon = ({ type = '' }) => {
-  const props = { size: 40, color: 'white' }
-  switch (type) {
-    case 'Clear':
-      return <WiDaySunny {...props} />
-    case 'Clouds':
-      return <WiCloud {...props} />
-    case 'Rain':
-      return <WiRain {...props} />
-    case 'Snow':
-      return <WiSnow {...props} />
-    case 'Mist':
-    case 'Fog':
-      return <WiFog {...props} />
-    default:
-      return <React.Fragment />
-  }
-}
-
 export const WeatherMainInformation = () => {
   const { current, location, time } = useRecoilValue(selectedPlaceState)
   const outFormat = 'hh:mm a - cccc, dd MMM yyyy'
@@ -108,7 +83,7 @@ export const WeatherMainInformation = () => {
         </LocationDetailsContainer>
         <WeatherDescriptionContainer>
           <Row style={{ marginBottom: 10 }}>
-            <WeatherIcon type={current.weather.main} />
+            <WeatherIcon type={current.weather.main} size={40} />
           </Row>
           <Row>
             <Text>{current.weather.main }</Text>

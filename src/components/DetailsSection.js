@@ -29,7 +29,7 @@ const DetailsSectionContent = styled.div`
     align-items: center;
   `}
   ${breakpoint('desktop')`
-    padding: 2em 3em;
+    padding: 2em 3em 0.5 3em;
     align-items: flex-start;
   `}
 `
