@@ -2,6 +2,7 @@ import React from 'react'
 import _ from 'lodash'
 import { useRecoilValue } from 'recoil'
 import styled from 'styled-components'
+import breakpoint from 'styled-components-breakpoint'
 import { Text } from './Text'
 import { Row } from './Row'
 import { selectedPlaceState } from '../state/atoms'
@@ -27,6 +28,13 @@ const RowItemContainer = styled(Row)`
   justify-content: space-between;
   width: 100%;
   padding-bottom: 1.5em;
+  ${breakpoint('tablet')`
+    max-width: 200px
+  `}
+
+  ${breakpoint('desktop')`
+    max-width: 100%
+  `}
 `
 
 /**
@@ -56,7 +64,7 @@ export const WeatherDetails = () => {
       <RowItem label='Cloudy' value={`${current.clouds}%`} />
       <RowItem label='Humidity' value={`${current.humidity}%`} />
       <RowItem label='Wind' value={`${current.wind_speed}km/h`} />
-      {/* <RowItem label='Rain' value={'8mm'} /> */}
+      {!_.isEmpty(current.rain) && <RowItem label='Rain' value={`${current.rain['1h']}mm`} />}
     </Container>
   )
 }
