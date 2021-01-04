@@ -40,7 +40,7 @@ const PhotosByText = styled(Text)`
 export const Credits = () => (
   <Container>
     <CreditsContainer>
-      <Text><a target="_blank" rel="noopener noreferrer" href="https://dribbble.com/shots/7118235-Weather-DailyUI-037">Design inspiration</a> by <a target="_blank" rel="noopener noreferrer" href="https://dribbble.com/thearthurk">Arthur K</a></Text>
+      <Text><a target="_blank" rel="noopener noreferrer" href="https://dribbble.com/shots/7118235-Weather-DailyUI-037">Design inspiration</a> - Original design by <a target="_blank" rel="noopener noreferrer" href="https://dribbble.com/thearthurk">Arthur K</a></Text>
     </CreditsContainer>
     <PhotosByContainer>
       <PhotosByText>Photos By</PhotosByText>
