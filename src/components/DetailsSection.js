@@ -8,7 +8,7 @@ import { WeatherDetails } from './WeatherDetails'
 const Container = styled.div`
   width: 100%;
   overflow-y: auto;
-  backdrop-filter: blur(15px);
+  backdrop-filter: blur(6px);
   ${breakpoint('desktop')`
     position: absolute;
     width: 30%;

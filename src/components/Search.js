@@ -13,7 +13,7 @@ const Container = styled.div`
   width: 100%;
   align-items: center;
   display: flex;
-  ${breakpoint('tablet')`
+  ${breakpoint('mobile')`
     justify-content: center;
   `}
   ${breakpoint('desktop')`

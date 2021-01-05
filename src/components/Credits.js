@@ -2,6 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import { Text } from './Text'
 import { Row } from './Row'
+import { useRecoilValue } from 'recoil'
+import { selectedPlaceState } from '../state/atoms'
 
 const Container = styled.footer`
   width: 100%;
@@ -37,24 +39,47 @@ const PhotosByText = styled(Text)`
 
 `
 
-export const Credits = () => (
-  <Container>
-    <CreditsContainer>
-      <Text><a target="_blank" rel="noopener noreferrer" href="https://dribbble.com/shots/7118235-Weather-DailyUI-037">Design inspiration</a> - Original design by <a target="_blank" rel="noopener noreferrer" href="https://dribbble.com/thearthurk">Arthur K</a></Text>
-    </CreditsContainer>
-    <PhotosByContainer>
-      <PhotosByText>Photos By</PhotosByText>
+const photoCreditsMap = {
+  'Clear': {
+    link: 'https://unsplash.com/@neilrst?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText',
+    author: 'Neil Rosenstech',
+  },
+  'Clouds': {
+    link: 'https://unsplash.com/@matthiasoberholzer?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText',
+    author: 'Matthias Oberholzer'
+  },
+  'Mist': {
+    link: 'https://unsplash.com/@matthiasoberholzer?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText',
+    author: 'Harald Pliessnig'
+  },
+  'Fog': {
+    link: 'https://unsplash.com/@brandaohh?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText',
+    author: 'Branimir Balogović'
+  },
+  'Rain': {
+    link: 'https://unsplash.com/@valentin_mueller?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText',
+    author: 'Valentin Müller'
+  },
+  'Snow': {
+    link: 'https://unsplash.com/@samuel_s?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText',
+    author: 'Samuel'
+  }
+}
+
+export const Credits = () => {
+  const { current } = useRecoilValue(selectedPlaceState)
+  const weatherType = current.weather.main || 'Clouds'
+  const { link, author } = photoCreditsMap[weatherType]
+  return (
+    <Container>
       <CreditsContainer>
-        <Text><a target="_blank" rel="noopener noreferrer" href="https://unsplash.com/@ninjason?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Jason Leung</a></Text>
-        <Text><a target="_blank" rel="noopener noreferrer" href="https://unsplash.com/@nathananderson?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Nathan Anderson</a></Text>
-        <Text><a target="_blank" rel="noopener noreferrer" href="https://unsplash.com/@neilrst?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Neil Rosenstech</a></Text>
-        <Text><a target="_blank" rel="noopener noreferrer" href="https://unsplash.com/@valentin_mueller?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Valentin Müller</a></Text>
-        <Text><a target="_blank" rel="noopener noreferrer" href="https://unsplash.com/@eberhardgross?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Eberhard</a></Text>
-        <Text><a target="_blank" rel="noopener noreferrer" href="https://unsplash.com/@samuel_s?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Samuel</a></Text>
-        <Text><a target="_blank" rel="noopener noreferrer" href="https://unsplash.com/@florianolv?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Florian Olivo</a></Text>
+        <Text><a target="_blank" rel="noopener noreferrer" href="https://dribbble.com/shots/7118235-Weather-DailyUI-037">Design inspiration</a> - Original design by <a target="_blank" rel="noopener noreferrer" href="https://dribbble.com/thearthurk">Arthur K</a></Text>
       </CreditsContainer>
-    </PhotosByContainer>
-  </Container>
-)
+      <CreditsContainer>
+        <Text>Photo by <a target="_blank" rel="noopener noreferrer" href={link}>{author}</a></Text>
+      </CreditsContainer>
+    </Container>
+  )
+}
 
 
