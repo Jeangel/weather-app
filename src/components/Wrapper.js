@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useRecoilValue } from 'recoil'
-import breakpoint from 'styled-components-breakpoint'
 import { selectedPlaceState, spinnerState } from '../state/atoms'
 import { DetailsSection } from './DetailsSection'
 import { MainSection } from './MainSection'
+import { Credits } from './Credits'
 import { GlobalSpinner } from './GlobalSpinner'
 import Clear from '../images/Clear.jpg'
 import Clouds from '../images/Clouds.jpg'
@@ -21,9 +21,6 @@ const Container = styled.div`
   background-image: ${({ backgroundImage }) => `url(${backgroundImage})`};
   background-size: cover;
   background-position-y: center;
-  ${breakpoint('desktop')`
-    flex-direction: row;
-  `}
 `
 
 const Main = styled(MainSection)`
@@ -51,6 +48,7 @@ export const Wrapper = () => {
       <Container backgroundImage={weatherTypeImageMap[weatherType]}>
         <Main />
         <DetailsSection />
+        <Credits />
       </Container>
     </React.Fragment>
   )

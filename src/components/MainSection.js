@@ -9,11 +9,15 @@ const Container = styled.div`
   justify-content: center;
   display: flex;
   order: 2;
+  ${breakpoint('mobile')`
+    flex: 1;
+  `}
   ${breakpoint('desktop')`
     width: 70%;
     display: flex;
     align-items: flex-end;
     order: 1
+    flex: initial;
   `}
 `
 

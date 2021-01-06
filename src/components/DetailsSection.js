@@ -12,8 +12,7 @@ const Container = styled.div`
   `}
   backdrop-filter: blur(6px);
   ${breakpoint('tablet')`
-    min-height: 670px;
-    overflow-y: unset;
+    min-height: 300px;
   `}
   ${breakpoint('desktop')`
     position: absolute;

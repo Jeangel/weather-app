@@ -4,39 +4,35 @@ import { Text } from './Text'
 import { Row } from './Row'
 import { useRecoilValue } from 'recoil'
 import { selectedPlaceState } from '../state/atoms'
+import breakpoint from 'styled-components-breakpoint'
 
 const Container = styled.footer`
   width: 100%;
-  background-color: black;
+  background-color: #000000a3;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  padding: 10px 0;
+  padding: 8px 0;
+  order: 3;
+  ${breakpoint('desktop')`
+    max-height: 65px;
+    align-self: flex-end;
+    justify-content: flex-start;
+  `}
 `
 
 const CreditsContainer = styled(Row)`
-  width: 100%;
   text-align: center;
   justify-content: space-evenly;
   align-items: center;
-  padding: 10px 0;
+  padding: 8px 10px;
   flex-wrap: wrap;
 `
 
-const PhotosByContainer = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  padding: 20px 0;
-`
-
-const PhotosByText = styled(Text)`
-  width: 100%;
-  text-align: center;
-
+const CreditsText = styled(Text)`
+  font-size: 12px;
 `
 
 const photoCreditsMap = {
@@ -66,17 +62,17 @@ const photoCreditsMap = {
   }
 }
 
-export const Credits = () => {
+export const Credits = ({ props }) => {
   const { current } = useRecoilValue(selectedPlaceState)
   const weatherType = current.weather.main || 'Clouds'
   const { link, author } = photoCreditsMap[weatherType]
   return (
-    <Container>
+    <Container {...props}>
       <CreditsContainer>
-        <Text><a target="_blank" rel="noopener noreferrer" href="https://dribbble.com/shots/7118235-Weather-DailyUI-037">Design inspiration</a> - Original design by <a target="_blank" rel="noopener noreferrer" href="https://dribbble.com/thearthurk">Arthur K</a></Text>
+        <CreditsText><a target="_blank" rel="noopener noreferrer" href="https://dribbble.com/shots/7118235-Weather-DailyUI-037">Design inspiration</a> - Original design by <a target="_blank" rel="noopener noreferrer" href="https://dribbble.com/thearthurk">Arthur K</a></CreditsText>
       </CreditsContainer>
       <CreditsContainer>
-        <Text>Photo by <a target="_blank" rel="noopener noreferrer" href={link}>{author}</a></Text>
+        <CreditsText>Photo by <a target="_blank" rel="noopener noreferrer" href={link}>{author}</a></CreditsText>
       </CreditsContainer>
     </Container>
   )
