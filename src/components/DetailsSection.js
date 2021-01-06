@@ -7,8 +7,14 @@ import { WeatherDetails } from './WeatherDetails'
 
 const Container = styled.div`
   width: 100%;
-  overflow-y: auto;
+  ${breakpoint('mobile')`
+    overflow-y: auto;
+  `}
   backdrop-filter: blur(6px);
+  ${breakpoint('tablet')`
+    min-height: 670px;
+    overflow-y: unset;
+  `}
   ${breakpoint('desktop')`
     position: absolute;
     width: 30%;

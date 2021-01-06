@@ -12,10 +12,13 @@ import { selectedPlaceState } from '../state/atoms'
 
 const Container = styled(Row)`
   width: 100%;
-  padding: 6em 1em;
+  padding: 1em;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  ${breakpoint('tablet')`
+    padding: 6em 1em;
+  `}
   ${breakpoint('desktop')`
     align-items: flex-end;
     padding: 0 0 6em 10em;
