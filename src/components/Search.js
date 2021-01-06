@@ -9,7 +9,7 @@ import { placesState } from '../state/atoms'
 import { spinnerState } from '../state/atoms'
 import { useRecoilState, useSetRecoilState } from 'recoil'
 
-const Container = styled.div`
+const Form = styled.form`
   width: 100%;
   align-items: center;
   display: flex;
@@ -44,7 +44,8 @@ export const Search = () => {
   const [filterValue, setFilterValue] = useState('')
   const setPlaces = useSetRecoilState(placesState);
   const [isSpinnerActive, setIsSpinnerActive] = useRecoilState(spinnerState);
-  const search = async () => {
+  const search = async (e) => {
+    e.preventDefault()
     setIsSpinnerActive(true)
     const newPlaces = await searchPlaces(filterValue)
     setPlaces(newPlaces)
@@ -52,19 +53,19 @@ export const Search = () => {
   }
 
   return (
-    <Container>
-      <SearchInputContainer>
-        <SearchInput 
-          placeholder='Search Places' 
-          value={filterValue}
-          onChange={(e) => setFilterValue(e.target.value)}
-        />
-      </SearchInputContainer>
-      <ButtonContainer>
-        <Button onClick={search} disabled={isSpinnerActive || !filterValue}>
-          <FaSearch size={10} />
-        </Button>
-      </ButtonContainer>
-    </Container>
+    <Form onSubmit={search}>
+        <SearchInputContainer>
+          <SearchInput 
+            placeholder='Search Places' 
+            value={filterValue}
+            onChange={(e) => setFilterValue(e.target.value)}
+          />
+        </SearchInputContainer>
+        <ButtonContainer>
+          <Button type='submit' disabled={isSpinnerActive || !filterValue}>
+            <FaSearch size={10} />
+          </Button>
+        </ButtonContainer>
+    </Form>
   )
 }

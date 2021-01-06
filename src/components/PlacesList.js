@@ -9,7 +9,7 @@ import breakpoint from 'styled-components-breakpoint'
 const Container = styled.div`
   width: 100%;
   ${breakpoint('desktop')`
-    height: 200px;
+    height: 160px;
   `};
 `
 

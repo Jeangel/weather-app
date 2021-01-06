@@ -20,11 +20,10 @@ const DetailsContainer = styled.div`
     content: "";
     border-top: 0.2px solid white;
     width: 100%;
-    padding-bottom: 2em;
+    padding-bottom: 1.5em;
   }
   display: flex;
   flex-direction: column;
-  height: 200px;
   width: 100%;
 `
 
@@ -35,7 +34,7 @@ const Title = styled(Text)`
 const RowItemContainer = styled(Row)`
   justify-content: space-between;
   width: 100%;
-  padding-bottom: 1.5em;
+  padding-bottom: 1em;
   ${breakpoint('tablet')`
     max-width: 200px
   `}

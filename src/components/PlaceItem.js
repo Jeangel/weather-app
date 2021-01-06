@@ -18,7 +18,7 @@ const Container = styled.div`
   display: flex;
   width: 100%;
   align-items: center;
-  padding-bottom: 1.5em;
+  padding-bottom: 1em;
   cursor: pointer;
 `
 
