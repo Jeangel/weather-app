@@ -5,9 +5,11 @@ import { Input } from './Input'
 import { Button } from './Button'
 import { FaSearch } from 'react-icons/fa'
 import { searchPlaces } from '../api/weather'
+import { useTypewriter } from '../hooks'
 import { placesState } from '../state/atoms'
 import { spinnerState } from '../state/atoms'
 import { useRecoilState, useSetRecoilState } from 'recoil'
+import { cities } from '../data/capitals'
 
 const Form = styled.form`
   width: 100%;
@@ -42,6 +44,7 @@ const ButtonContainer = styled.div`
 
 export const Search = () => {
   const [filterValue, setFilterValue] = useState('')
+  const placeholder = useTypewriter(cities)
   const setPlaces = useSetRecoilState(placesState);
   const [isSpinnerActive, setIsSpinnerActive] = useRecoilState(spinnerState);
   const search = async (e) => {
@@ -56,7 +59,7 @@ export const Search = () => {
     <Form onSubmit={search}>
         <SearchInputContainer>
           <SearchInput 
-            placeholder='Search Places' 
+            placeholder={placeholder} 
             value={filterValue}
             onChange={(e) => setFilterValue(e.target.value)}
           />
