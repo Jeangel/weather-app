@@ -16,6 +16,7 @@ import { WiFog, WiDaySunny, WiSnow, WiRain, WiCloud } from 'react-icons/all'
      case 'Clouds':
        return <WiCloud {...props} />
      case 'Rain':
+     case 'Drizzle':
        return <WiRain {...props} />
      case 'Snow':
        return <WiSnow {...props} />

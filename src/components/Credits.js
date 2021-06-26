@@ -56,6 +56,11 @@ const photoCreditsMap = {
     link: 'https://unsplash.com/@valentin_mueller?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText',
     author: 'Valentin Müller'
   },
+  'Drizzle': {
+    link: 'https://unsplash.com/@valentin_mueller?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText',
+    author: 'Valentin Müller'
+    
+  },
   'Snow': {
     link: 'https://unsplash.com/@samuel_s?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText',
     author: 'Samuel'

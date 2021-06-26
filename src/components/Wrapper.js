@@ -34,6 +34,7 @@ const weatherTypeImageMap = {
   'Fog': Fog,
   'Mist': Mist,
   'Rain': Rain,
+  'Drizzle': Rain,
   'Snow': Snow
 
 }
