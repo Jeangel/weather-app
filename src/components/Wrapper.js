@@ -18,10 +18,18 @@ const Container = styled.div`
   flex-direction: column;
   height: 100vh;
   width: 100%;
-  background-image: ${({ backgroundImage }) => `url(${backgroundImage})`};
   background-size: cover;
   background-position-y: center;
 `
+
+const BackgroundImage = styled.img`
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -5;
+`
+
 
 const Main = styled(MainSection)`
   order: 2;
@@ -46,7 +54,8 @@ export const Wrapper = () => {
   return (
     <React.Fragment>
       <GlobalSpinner active={isSpinnerActive} />
-      <Container backgroundImage={weatherTypeImageMap[weatherType]}>
+      <BackgroundImage rel='preload' src={weatherTypeImageMap[weatherType]} />
+      <Container>
         <Main />
         <DetailsSection />
         <Credits />
