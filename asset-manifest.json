@@ -1,28 +1,29 @@
 {
   "files": {
     "main.css": "/weather-app/static/css/main.89b912cf.chunk.css",
-    "main.js": "/weather-app/static/js/main.7d210159.chunk.js",
-    "main.js.map": "/weather-app/static/js/main.7d210159.chunk.js.map",
+    "main.js": "/weather-app/static/js/main.efc2a3ed.chunk.js",
+    "main.js.map": "/weather-app/static/js/main.efc2a3ed.chunk.js.map",
     "runtime-main.js": "/weather-app/static/js/runtime-main.39fa7caf.js",
     "runtime-main.js.map": "/weather-app/static/js/runtime-main.39fa7caf.js.map",
-    "static/js/2.2b639830.chunk.js": "/weather-app/static/js/2.2b639830.chunk.js",
-    "static/js/2.2b639830.chunk.js.map": "/weather-app/static/js/2.2b639830.chunk.js.map",
+    "static/js/2.ef42cf1e.chunk.js": "/weather-app/static/js/2.ef42cf1e.chunk.js",
+    "static/js/2.ef42cf1e.chunk.js.map": "/weather-app/static/js/2.ef42cf1e.chunk.js.map",
     "static/js/3.9e5eb488.chunk.js": "/weather-app/static/js/3.9e5eb488.chunk.js",
     "static/js/3.9e5eb488.chunk.js.map": "/weather-app/static/js/3.9e5eb488.chunk.js.map",
     "index.html": "/weather-app/index.html",
     "static/css/main.89b912cf.chunk.css.map": "/weather-app/static/css/main.89b912cf.chunk.css.map",
-    "static/js/2.2b639830.chunk.js.LICENSE.txt": "/weather-app/static/js/2.2b639830.chunk.js.LICENSE.txt",
+    "static/js/2.ef42cf1e.chunk.js.LICENSE.txt": "/weather-app/static/js/2.ef42cf1e.chunk.js.LICENSE.txt",
     "static/media/Clear.16a8b6d4.jpg": "/weather-app/static/media/Clear.16a8b6d4.jpg",
     "static/media/Clouds.d95ff3f3.jpg": "/weather-app/static/media/Clouds.d95ff3f3.jpg",
     "static/media/Fog.fa4ced79.jpg": "/weather-app/static/media/Fog.fa4ced79.jpg",
+    "static/media/Haze.cb238eac.jpg": "/weather-app/static/media/Haze.cb238eac.jpg",
     "static/media/Mist.cdbaa75d.jpg": "/weather-app/static/media/Mist.cdbaa75d.jpg",
     "static/media/Rain.4e942c9b.jpg": "/weather-app/static/media/Rain.4e942c9b.jpg",
     "static/media/Snow.ba83b72b.jpg": "/weather-app/static/media/Snow.ba83b72b.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.39fa7caf.js",
-    "static/js/2.2b639830.chunk.js",
+    "static/js/2.ef42cf1e.chunk.js",
     "static/css/main.89b912cf.chunk.css",
-    "static/js/main.7d210159.chunk.js"
+    "static/js/main.efc2a3ed.chunk.js"
   ]
 }
