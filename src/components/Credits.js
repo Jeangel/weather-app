@@ -66,8 +66,8 @@ const photoCreditsMap = {
     author: 'Samuel'
   },
   'Haze': {
-    link: 'https://unsplash.com/@landall?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText',
-    author: 'Lan Deng'
+    link: 'https://unsplash.com/@alexgindin?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText',
+    author: 'Alex Gindin'
   }
 }
 
