@@ -64,6 +64,10 @@ const photoCreditsMap = {
   'Snow': {
     link: 'https://unsplash.com/@samuel_s?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText',
     author: 'Samuel'
+  },
+  'Haze': {
+    link: 'https://unsplash.com/@landall?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText',
+    author: 'Lan Deng'
   }
 }
 

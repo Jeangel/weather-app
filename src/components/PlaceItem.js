@@ -28,7 +28,7 @@ const CountryImage = styled.img`
 `
 
 const PlaceDescription = styled.span`
-  color: ${({ isBeingHovered }) => isBeingHovered ? 'white' : 'lightgray'};
+  color: ${({ isBeingHovered }) => isBeingHovered ? 'white' : '#efeaea'};
   font-weight: lighter;
 `
 
