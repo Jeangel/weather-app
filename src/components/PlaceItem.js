@@ -24,6 +24,7 @@ const Container = styled.div`
 
 const CountryImage = styled.img`
   margin-right: 10px;
+  width: 25px;
 `
 
 const PlaceDescription = styled.span`
@@ -51,7 +52,8 @@ export const PlaceItem = ({ place }) => {
     setSelectedPlace({ ...locationWeatherDetails, location: place, time: timeDetails })
     setSpinnerIsActive(false)
   }
-  const countryFlagUrl = `https://www.countryflags.io/${country.toLowerCase()}/flat/24.png`
+
+  const countryFlagUrl = `https://flagcdn.com/${country.toLowerCase()}.svg`
   return (
     <Container 
       onClick={handleClick} 
